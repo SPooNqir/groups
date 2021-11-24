@@ -1,0 +1,145 @@
+syntax = "proto3";
+
+package grpc;
+
+option go_package = "gitlab.com/SpoonQIR/Cloud/services/groups.git/grpc;grpc";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/any.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+	info: {
+		title: "Spoon - groups WS";
+		version: "0.0.1";
+		contact: {
+			name: "Spoon Cloud Team";
+			url: "https://gitlab.com/SpoonQIR/Cloud/services/groups";
+			email: "sebastien.lavayssiere@spoon.ai";
+		};
+	};
+	// Overwriting host entry breaks tests, so this is not done here.
+	external_docs: {
+		url: "https://gitlab.com/SpoonQIR/Cloud/services/groups";
+		description: "link for docs";
+	}
+	schemes: HTTPS;
+	schemes: HTTP;
+	consumes: "application/json";
+	produces: "application/json";
+	security_definitions: {
+		security: {
+			key: "ApiKeyAuth";
+			value: {
+				type: TYPE_API_KEY;
+				in: IN_HEADER;
+				name: "Authorization";
+			}
+		}
+	}
+	security: {
+		security_requirement: {
+			key: "ApiKeyAuth";
+			value: {};
+		}
+	}
+	responses: {
+		key: "403";
+		value: {
+			description: "Returned when the user does not have permission to access the resource.";
+		}
+	}
+	responses: {
+		key: "404";
+		value: {
+			description: "Returned when the resource does not exist.";
+			schema: {
+				json_schema: {
+					type: STRING;
+				}
+			}
+		}
+	}
+	responses: {
+		key: "418";
+		value: {
+			description: "I'm a teapot.";
+			schema: {
+				json_schema: {
+					ref: ".grpc.gateway.examples.internal.proto.examplepb.NumericEnum";
+				}
+			}
+		}
+	}
+};
+
+message Group {
+	// @inject_tag: gorm:"-"
+	uint64 id = 1;
+	// @inject_tag: gorm:"unique;not null"
+	string name = 2;
+	string label = 3;
+	// @inject_tag: gorm:"-"
+	repeated string paths = 4;
+	// @inject_tag: gorm:"-"
+	repeated Group parents = 5;
+	// @inject_tag: gorm:"-"
+	repeated Group children = 6;
+	// @inject_tag: gorm:"-"
+	repeated google.protobuf.Any composed = 7;
+}
+
+message Groups {
+	repeated Group list = 1;
+	uint64 limit = 2;
+	uint64 offset = 3;
+	uint64 max = 4;
+}
+
+service groups {
+	rpc GetAll (Groups) returns (Groups) {
+		option (google.api.http) = {
+			get: "/v1/groups"
+		};
+	}
+
+	rpc Get (Group) returns (Group) {
+		option (google.api.http) = {
+			get: "/v1/groups/id/{id}"
+		};
+	}
+
+	rpc GetByName (Group) returns (Group) {
+		option (google.api.http) = {
+			get: "/v1/groups/name/{name}"
+		};
+	}
+
+	rpc GetGraph (google.protobuf.Empty) returns (Groups) {
+		option (google.api.http) = {
+			get: "/v1/groups/graph"
+		};
+	}
+
+	rpc Add (Group) returns (Group) {
+		option (google.api.http) = {
+			post: "/v1/groups"
+			body: "*"
+		};
+	}
+
+	rpc AddSubGroup(Group) returns (Group) {
+		option (google.api.http) = {
+			post: "/v1/groups/{id}/subgroup"
+			body: "*"
+		};
+	}
+
+	rpc Update (Group) returns (Group) {
+		option (google.api.http) = {
+			patch: "/v1/groups"
+			body: "*"
+		};
+	}
+}
