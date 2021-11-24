@@ -32,7 +32,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/grpcGroups"
+              "$ref": "#/definitions/groupsGroups"
             }
           },
           "403": {
@@ -92,7 +92,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/grpcGroup"
+              "$ref": "#/definitions/groupsGroup"
             }
           },
           "403": {
@@ -125,7 +125,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/grpcGroup"
+              "$ref": "#/definitions/groupsGroup"
             }
           }
         ],
@@ -139,7 +139,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/grpcGroup"
+              "$ref": "#/definitions/groupsGroup"
             }
           },
           "403": {
@@ -172,7 +172,7 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/grpcGroup"
+              "$ref": "#/definitions/groupsGroup"
             }
           }
         ],
@@ -188,7 +188,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/grpcGroups"
+              "$ref": "#/definitions/groupsGroups"
             }
           },
           "403": {
@@ -227,7 +227,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/grpcGroup"
+              "$ref": "#/definitions/groupsGroup"
             }
           },
           "403": {
@@ -300,7 +300,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/grpcGroup"
+              "$ref": "#/definitions/groupsGroup"
             }
           },
           "403": {
@@ -373,7 +373,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/grpcGroup"
+              "$ref": "#/definitions/groupsGroup"
             }
           },
           "403": {
@@ -433,14 +433,14 @@
                 "parents": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/grpcGroup"
+                    "$ref": "#/definitions/groupsGroup"
                   },
                   "title": "@inject_tag: gorm:\"-\""
                 },
                 "children": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/grpcGroup"
+                    "$ref": "#/definitions/groupsGroup"
                   },
                   "title": "@inject_tag: gorm:\"-\""
                 },
@@ -462,7 +462,7 @@
     }
   },
   "definitions": {
-    "grpcGroup": {
+    "groupsGroup": {
       "type": "object",
       "properties": {
         "id": {
@@ -487,14 +487,14 @@
         "parents": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/grpcGroup"
+            "$ref": "#/definitions/groupsGroup"
           },
           "title": "@inject_tag: gorm:\"-\""
         },
         "children": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/grpcGroup"
+            "$ref": "#/definitions/groupsGroup"
           },
           "title": "@inject_tag: gorm:\"-\""
         },
@@ -507,13 +507,13 @@
         }
       }
     },
-    "grpcGroups": {
+    "groupsGroups": {
       "type": "object",
       "properties": {
         "list": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/grpcGroup"
+            "$ref": "#/definitions/groupsGroup"
           }
         },
         "limit": {

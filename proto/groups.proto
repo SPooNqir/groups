@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package grpc;
+package groups;
 
-option go_package = "gitlab.com/SpoonQIR/Cloud/services/groups.git/grpc;grpc";
+option go_package = "github.com/slavayssiere-spoon/groups";
 
 import "google/api/annotations.proto";
 import "google/protobuf/empty.proto";

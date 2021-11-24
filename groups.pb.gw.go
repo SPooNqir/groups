@@ -2,11 +2,11 @@
 // source: groups.proto
 
 /*
-Package grpc is a reverse proxy.
+Package groups is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package grpc
+package groups
 
 import (
 	"context"
@@ -374,7 +374,7 @@ func RegisterGroupsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Groups/GetAll", runtime.WithHTTPPathPattern("/v1/groups"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/groups.Groups/GetAll", runtime.WithHTTPPathPattern("/v1/groups"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -397,7 +397,7 @@ func RegisterGroupsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Groups/Get", runtime.WithHTTPPathPattern("/v1/groups/id/{id}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/groups.Groups/Get", runtime.WithHTTPPathPattern("/v1/groups/id/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -420,7 +420,7 @@ func RegisterGroupsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Groups/GetByName", runtime.WithHTTPPathPattern("/v1/groups/name/{name}"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/groups.Groups/GetByName", runtime.WithHTTPPathPattern("/v1/groups/name/{name}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -443,7 +443,7 @@ func RegisterGroupsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Groups/GetGraph", runtime.WithHTTPPathPattern("/v1/groups/graph"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/groups.Groups/GetGraph", runtime.WithHTTPPathPattern("/v1/groups/graph"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -466,7 +466,7 @@ func RegisterGroupsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Groups/Add", runtime.WithHTTPPathPattern("/v1/groups"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/groups.Groups/Add", runtime.WithHTTPPathPattern("/v1/groups"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -489,7 +489,7 @@ func RegisterGroupsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Groups/AddSubGroup", runtime.WithHTTPPathPattern("/v1/groups/{id}/subgroup"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/groups.Groups/AddSubGroup", runtime.WithHTTPPathPattern("/v1/groups/{id}/subgroup"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -512,7 +512,7 @@ func RegisterGroupsHandlerServer(ctx context.Context, mux *runtime.ServeMux, ser
 		var stream runtime.ServerTransportStream
 		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/grpc.Groups/Update", runtime.WithHTTPPathPattern("/v1/groups"))
+		rctx, err := runtime.AnnotateIncomingContext(ctx, mux, req, "/groups.Groups/Update", runtime.WithHTTPPathPattern("/v1/groups"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -574,7 +574,7 @@ func RegisterGroupsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Groups/GetAll", runtime.WithHTTPPathPattern("/v1/groups"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/groups.Groups/GetAll", runtime.WithHTTPPathPattern("/v1/groups"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -594,7 +594,7 @@ func RegisterGroupsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Groups/Get", runtime.WithHTTPPathPattern("/v1/groups/id/{id}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/groups.Groups/Get", runtime.WithHTTPPathPattern("/v1/groups/id/{id}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -614,7 +614,7 @@ func RegisterGroupsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Groups/GetByName", runtime.WithHTTPPathPattern("/v1/groups/name/{name}"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/groups.Groups/GetByName", runtime.WithHTTPPathPattern("/v1/groups/name/{name}"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -634,7 +634,7 @@ func RegisterGroupsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Groups/GetGraph", runtime.WithHTTPPathPattern("/v1/groups/graph"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/groups.Groups/GetGraph", runtime.WithHTTPPathPattern("/v1/groups/graph"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -654,7 +654,7 @@ func RegisterGroupsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Groups/Add", runtime.WithHTTPPathPattern("/v1/groups"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/groups.Groups/Add", runtime.WithHTTPPathPattern("/v1/groups"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -674,7 +674,7 @@ func RegisterGroupsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Groups/AddSubGroup", runtime.WithHTTPPathPattern("/v1/groups/{id}/subgroup"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/groups.Groups/AddSubGroup", runtime.WithHTTPPathPattern("/v1/groups/{id}/subgroup"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
@@ -694,7 +694,7 @@ func RegisterGroupsHandlerClient(ctx context.Context, mux *runtime.ServeMux, cli
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/grpc.Groups/Update", runtime.WithHTTPPathPattern("/v1/groups"))
+		rctx, err := runtime.AnnotateContext(ctx, mux, req, "/groups.Groups/Update", runtime.WithHTTPPathPattern("/v1/groups"))
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
