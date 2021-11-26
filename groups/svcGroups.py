@@ -9,9 +9,9 @@ from grpc_opentracing import open_tracing_client_interceptor
 from grpc_opentracing.grpcext import intercept_channel
 
 class SvcGroups():
-  def __init__(self):
+  def __init__(self, url):
     print("connect to groups svc")
-    channel = grpc.insecure_channel(os.environ['GROUPS_URL'])
+    channel = grpc.insecure_channel(url) # os.environ['GROUPS_URL']
     interceptor = open_tracing_client_interceptor(opentracing.tracer)
     channel = intercept_channel(channel, interceptor)
     self.stub = groupsStub(channel)
