@@ -2,6 +2,9 @@
 
 set -e
 
+python3 -m pip install grpcio
+python3 -m pip install grpcio-tools
+
 GEN_PATH="."
 GO_LIB_PATH=$(go env GOPATH)/src
 GOPATH=$(go env GOPATH)
@@ -24,6 +27,25 @@ protoc \
         --go-grpc_out=$GEN_PATH --go-grpc_opt=paths=source_relative \
         --grpc-gateway_out=logtostderr=true,paths=source_relative:$GEN_PATH \
         --openapiv2_out=logtostderr=true:. \
+        proto/groups.proto
+
+python3 -m grpc_tools.protoc \
+        -I proto \
+        -I $GOPATH/src/include \
+        --python_out=$GEN_PATH/groups \
+        $GOPATH/src/include/protoc-gen-openapiv2/options/annotations.proto
+
+python3 -m grpc_tools.protoc \
+        -I proto \
+        -I $GOPATH/src/include \
+        --python_out=$GEN_PATH/groups \
+        $GOPATH/src/include/protoc-gen-openapiv2/options/openapiv2.proto
+
+python3 -m grpc_tools.protoc \
+        -I proto \
+        -I $GOPATH/src/include \
+        --python_out=$GEN_PATH/groups \
+        --grpc_python_out=$GEN_PATH/groups \
         proto/groups.proto
 
 echo "inject tag"
