@@ -1,12 +1,18 @@
 import os
+import sys
 import grpc
 from flask import g
-from groups_pb2_grpc import groupsStub
-from groups_pb2 import Group
 
 import opentracing
 from grpc_opentracing import open_tracing_client_interceptor
 from grpc_opentracing.grpcext import intercept_channel
+
+
+path = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(path)
+
+from groups_pb2_grpc import groupsStub
+from groups_pb2 import Group
 
 class SvcGroups():
   def __init__(self, url):
