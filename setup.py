@@ -3,7 +3,7 @@ from setuptools import setup
 setup(
     # Needed to silence warnings (and to be a worthwhile package)
     name='Groups',
-    url='https://github.com/slavayssiere-spoon/groups',
+    url='https://github.com/SPooNqir/groups',
     author='Sebastien Lavayssiere',
     author_email='sebastien.lavayssiere@spoon.ai',
     # Needed to actually package something
